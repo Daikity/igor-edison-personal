@@ -1,0 +1,16 @@
+.experience {
+  & {
+    @apply w-full bg-black py-32;
+  }
+
+  h2 {
+    @apply text-gray-500 uppercase;
+  }
+  h3 {
+    @apply max-w-3xl;
+  }
+
+  .exp-list {
+    @apply flex items-start justify-between;
+  }
+}

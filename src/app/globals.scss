@@ -1,0 +1,73 @@
+@use '@/assets/scss/global/_varibels' as *;
+@use '@/assets/scss/global/_mixins' as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --color-base:           #000000;
+  --color-text:           #FFFFFF;
+  --color-lvl-1:          #181823;
+  --color-primary:        #5221E6;
+  --color-dark-grey:      #C7E0F4;
+  --color-light-grey:     #DEECF9;
+  --color-pink-accent:    #E95D90;
+  --color-peach-accent:   #FFF3E4;
+  --color-green-accent:   #3CC74E;
+  --color-violet-accent:  #FBE4FF;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-base);
+  font-family: Sen, sans-serif;
+}
+
+h1 {
+  font-size: 78px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 55px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 40px;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+p {
+  font-size: 16px;
+}
+
+[class*=__container] {
+  @apply max-w-[1440px] mx-auto my-0 px-10;
+}
+
+@media (max-width: 1440px) {
+  .top__wrap {
+      -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+      justify-content: stretch;
+  }
+}

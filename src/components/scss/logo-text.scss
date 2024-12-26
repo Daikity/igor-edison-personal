@@ -1,0 +1,12 @@
+.logo-txt {
+  font-family: var(--font-teko);
+  @apply uppercase font-semibold;
+
+  &.l {
+    font-size: 52px;
+  }
+
+  &.m {
+    font-size: 32px;
+  }
+}

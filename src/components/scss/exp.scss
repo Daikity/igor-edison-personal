@@ -1,0 +1,9 @@
+.exp {
+  @apply flex flex-col max-w-sm;
+  .counter {
+    @apply text-9xl leading-tight text-slate-400;
+  }
+  p {
+    @apply text-slate-400;
+  }
+}
