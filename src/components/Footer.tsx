@@ -1,3 +1,5 @@
+'use client'
+
 import './scss/footer.scss';
 import LogoText from "./LogoText";
 import Image from 'next/image';

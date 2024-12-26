@@ -1,3 +1,5 @@
+'use client'
+
 import LogoText from "./LogoText";
 import "./scss/top-menu.scss";
 

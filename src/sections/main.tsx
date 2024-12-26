@@ -1,3 +1,5 @@
+'use client'
+
 import '@/assets/scss/home.scss';
 import Image from "next/image";
 import PhotoImg from '@/assets/image/i_edison.jpg'

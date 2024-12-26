@@ -1,3 +1,5 @@
+'use client'
+
 import './scss/logo-text.scss';
 
 type propsType = {
