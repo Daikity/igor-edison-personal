@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-full min-h-[30rem] home">
+      <div className="home">
         <Main ref={mainSection} />
       </div>
       <Experience ref={experience} />

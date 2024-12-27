@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'app')],
-    prependData: `
-      @use '@/assets/scss/global/varibels' as *;
+    includePaths: [path.join(__dirname, 'assets/scss')],
+    additionalData: `
+      @use "sass:map";
       @use '@/assets/scss/global/mixins' as *;
     `,
   },

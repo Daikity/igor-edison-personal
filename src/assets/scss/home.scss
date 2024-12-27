@@ -1,24 +1,72 @@
-@use '@/assets/scss/global/_varibels' as *;
-@use '@/assets/scss/global/_mixins' as *;
-
 .home {
-  @apply relative pt-14 pb-20 bg-black;
+  @apply relative pb-20 bg-black h-full min-h-[30rem];
+  @include adaptive(tablet) {
+    @apply pt-0;
+  }
+  @include adaptive(laptop) {
+    @apply pt-14;
+  }
   .title {
-    @apply flex items-center justify-center;
-
-    .title-text {
-      @apply relative -translate-x-11 z-[3] text-white;
-      flex: 0 0 738px;
+    @apply flex justify-stretch;
+    @include adaptive(laptop-l) {
+      @apply items-center justify-center;
     }
 
-    img {
-      @apply relative z-[2];
+    .title-text {
+      flex: 0 1 55%;
+      @apply z-[3] text-white;
+
+      @include adaptive(tablet) {
+        @apply absolute top-1/3 right-8 w-3/5;
+      }
+      @include adaptive(laptop) {
+        transform: translate(0, 0);
+        @apply relative flex flex-col justify-center;
+      }
+      @include adaptive(laptop-l) {
+        flex: 0 0 738px;
+        @apply relative -translate-x-11;
+      }
+    }
+
+    .photo-container {
+      width: 100rem;
+      height: 100rem;
+      // transform: translate(20%, 0);
+      @apply max-w-[750] max-h-[650] relative z-[2];
+
+      @include adaptive(tablet) {
+        @apply -translate-x-48;
+      }
+
+      @include adaptive(laptop-l) {
+        transform: translate(0, 0);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @apply absolute z-[2] w-full h-full top-0 left-0;
+      }
+
+      .photo-gradient {
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0) 20%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+        @apply absolute z-[3] w-full h-full top-0 left-0;
+        @include adaptive(laptop-l) { display: none; }
+      }
     }
 
     &::after {
-      content: "";
-      @apply absolute z-[1] -top-24 bottom-0 left-1/3 right-0;
       background-color: var(--color-lvl-1);
+      @include adaptive(laptop-l) {
+        content: "";
+      }
+      @apply absolute z-[1] -top-24 bottom-0 left-1/3 right-0;
     }
   }
 }

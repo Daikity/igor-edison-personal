@@ -1,10 +1,6 @@
-@use '@/assets/scss/global/_varibels' as *;
-@use '@/assets/scss/global/_mixins' as *;
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 :root {
   --color-base:           #000000;
@@ -30,10 +26,14 @@ body {
 }
 
 h1 {
-  font-size: 78px;
+
   font-weight: 700;
   line-height: normal;
   margin-bottom: 32px;
+  font-size: 56px;
+  @include adaptive(laptop) {
+    font-size: 78px;
+  }
 }
 
 h2 {

@@ -8,7 +8,10 @@ import { RefObject } from 'react';
 export default function Main({ref}: {ref: RefObject<null>}) {
   return (
     <div className="title" ref={ref}>
-      <Image src={PhotoImg} alt="I.EDISON" width={750} height={650} />
+      <div className="photo-container">
+        <Image src={PhotoImg} priority={true} alt="I.EDISON" />
+        <div className='photo-gradient' />
+      </div>
       <div className="title-text">
         <h1>
           {`I'm Igor Edison.`} <br />

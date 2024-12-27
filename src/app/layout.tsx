@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Sen, Teko } from "next/font/google";
-import "./globals.scss";
+import './globals.scss';
 
 // components
 import TopMenu from "@/components/TopMenu";
