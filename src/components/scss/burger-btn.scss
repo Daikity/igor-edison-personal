@@ -1,0 +1,47 @@
+.burger-button {
+  width: 18px;
+  height: 11px;
+  position: relative;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+
+  &::before {
+    width: 100%;
+    top: 0;
+  }
+
+  span {
+    width: 13px;
+    bottom: 0;
+  }
+
+  &::before, span {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 2px;
+    background-color: #fff;
+    -webkit-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+  }
+
+  &.active {
+    span {
+      bottom: calc(50% - 1px);
+      transform: rotate(45deg);
+      width: 100%;
+    }
+    &::before {
+      top: calc(50% - 1px);
+      transform: rotate(-45deg);
+    }
+  }
+
+  @include adaptive(mobile-s) {
+    @apply block;
+  }
+  @include adaptive(laptop-s) {
+    @apply hidden;
+  }
+}

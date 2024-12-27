@@ -9,6 +9,10 @@
       @include adaptive(laptop-s) {
         @apply flex;
       }
+
+      li {
+        @apply transition-all cursor-pointer py-8 px-6 hover:bg-blue-800;
+      }
     }
   }
 }
