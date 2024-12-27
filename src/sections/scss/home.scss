@@ -45,8 +45,7 @@
     .photo-container {
       height: 100rem;
 
-      // transform: translate(20%, 0);
-      @apply max-w-[750] max-h-[650] relative z-[2];
+      @apply max-w-[750px] max-h-[650px] relative z-[2];
 
       @include adaptive(mobile-s) {
         @apply flex-col ;
