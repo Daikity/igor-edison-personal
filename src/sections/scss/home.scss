@@ -1,7 +1,10 @@
 .home {
-  @apply relative pb-20 bg-black h-full min-h-[30rem];
+  @apply relative bg-black;
+  @include adaptive(mobile-s) {
+    @apply -translate-y-28;
+  }
   @include adaptive(tablet) {
-    @apply pt-0;
+    @apply pt-0 pb-20 -translate-y-0;
   }
   @include adaptive(laptop) {
     @apply pt-14;
@@ -10,10 +13,10 @@
     @apply flex justify-stretch;
 
     @include adaptive(mobile-s) {
-      @apply flex-col -translate-y-28 gap-14;
+      @apply flex-col gap-14;
     }
     @include adaptive(tablet) {
-      @apply flex-row -translate-y-0;
+      @apply flex-row;
     }
     @include adaptive(laptop-l) {
       @apply items-center justify-center;
