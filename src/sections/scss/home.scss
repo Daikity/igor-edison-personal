@@ -51,6 +51,10 @@
         @apply flex-col ;
       }
 
+      @include adaptive(mobile-s) {
+        @apply flex-col ;
+      }
+
       @include adaptive(tablet) {
         width: 100rem;
         @apply -translate-x-48 ;
