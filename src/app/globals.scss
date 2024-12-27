@@ -25,12 +25,23 @@ body {
   font-family: Sen, sans-serif;
 }
 
-h1 {
+main {
+  @include adaptive(tablet) {
+    @apply pt-8;
+  }
+}
 
+h1 {
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 32px;
-  font-size: 56px;
+  @include adaptive(mobile-s) {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  @include adaptive(tablet) {
+    font-size: 56px;
+    margin-bottom: 32px;
+  }
   @include adaptive(laptop) {
     font-size: 78px;
   }
@@ -57,17 +68,9 @@ h4 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 [class*=__container] {
   @apply max-w-[1440px] mx-auto my-0 px-10;
-}
-
-@media (max-width: 1440px) {
-  .top__wrap {
-      -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-      justify-content: stretch;
-  }
 }

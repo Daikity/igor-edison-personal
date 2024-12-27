@@ -1,6 +1,6 @@
 'use client'
 
-import '@/assets/scss/home.scss';
+import '@/sections/scss/home.scss';
 import Image from "next/image";
 import PhotoImg from '@/assets/image/i_edison.jpg'
 import { RefObject } from 'react';

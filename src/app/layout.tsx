@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${senFont.variable} ${tekoFont.variable} antialiased`}
       >
         <header className="relative"> <TopMenu /> </header>
-        <main className="pt-20">
+        <main>
           {children}
         </main>
         <Footer />

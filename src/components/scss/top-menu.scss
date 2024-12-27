@@ -1,6 +1,14 @@
 .top-menu {
-  @apply w-full left-0 top-0 z-[4] fixed bg-transparent;
+  @apply w-full left-0 top-0 z-[4] fixed;
   .header__container {
     @apply flex justify-between items-center gap-14 min-h-20;
+    ul {
+      @include adaptive(mobile-s) {
+        @apply hidden;
+      }
+      @include adaptive(laptop-s) {
+        @apply flex;
+      }
+    }
   }
 }

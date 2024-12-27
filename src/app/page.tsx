@@ -13,7 +13,7 @@ export default function Home() {
       <div className="home">
         <Main ref={mainSection} />
       </div>
-      <Experience ref={experience} />
+      {/* <Experience ref={experience} /> */}
     </>
   );
 }
