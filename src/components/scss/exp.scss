@@ -1,5 +1,8 @@
 .exp {
-  @apply flex flex-col max-w-sm;
+  @apply flex flex-col max-w-full;
+  @include adaptive(laptop-s) {
+    @apply max-w-sm;
+  }
   .counter {
     @apply text-9xl leading-tight text-slate-400;
   }

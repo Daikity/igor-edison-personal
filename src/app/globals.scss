@@ -55,10 +55,16 @@ h2 {
 }
 
 h3 {
-  font-size: 55px;
   font-weight: 700;
   line-height: normal;
   margin-bottom: 40px;
+  @include adaptive(mobile-s) {
+    font-size: 32px;
+  }
+  @include adaptive(tablet) {
+    font-size: 56px;
+    margin-bottom: 32px;
+  }
 }
 
 h4 {
