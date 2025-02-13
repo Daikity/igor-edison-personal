@@ -1,6 +1,6 @@
 'use client'
 
-import Exp from '@/components/Exp';
+import Exp from '@/components/exp';
 import Text from '@/components/Text';
 
 import '@/sections/scss/experience.scss'
