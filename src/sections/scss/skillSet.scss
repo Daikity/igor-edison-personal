@@ -1,0 +1,19 @@
+.skill-set {
+  @apply py-20;
+  .skill-set__container {
+    @apply grid grid-cols-3 gap-20;
+    .skill-list {
+      @apply col-span-2 flex gap-5 flex-wrap;
+      .skill-item {
+        @apply max-w-[48%];
+        i {
+          @apply mb-3;
+        }
+        p {
+          font-size: 16px;
+          @apply text-slate-400;
+        }
+      }
+    }
+  }
+}

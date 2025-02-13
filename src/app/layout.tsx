@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sen, Teko } from "next/font/google";
 import './globals.scss';
+import { texts } from '@/app/i18n';
 
 // components
 import TopMenu from "@/components/TopMenu";
@@ -16,11 +17,12 @@ const tekoFont = Teko({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Igor Edison",
-  description: "Personal page about me",
-};
+const { metadata: meta } = texts.en;
 
+export const metadata: Metadata = {
+  title: meta.title,
+  description: meta.description,
+};
 
 export default function RootLayout({
   children,

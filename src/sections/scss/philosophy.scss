@@ -1,0 +1,6 @@
+.philosophy {
+  @apply grid grid-cols-2 items-center bg-[var(--color-peach-accent)];
+  .text__container * {
+    @apply text-[var(--color-lvl-1)];
+  }
+}

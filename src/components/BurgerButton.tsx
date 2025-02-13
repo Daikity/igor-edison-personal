@@ -1,14 +1,14 @@
 'use client'
 
 import '@/components/scss/burger-btn.scss'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface BurgerBtnProps {
   setActive: (isActive: boolean) => void,
   isActiveBtn?: boolean
 }
 
-export default function BurgerButton({setActive, isActiveBtn}: BurgerBtnProps) {
+const BurgerButton = React.memo(function BurgerButton({setActive, isActiveBtn = false}: BurgerBtnProps) {
   const [isActive, setIsActive] = useState(isActiveBtn)
 
   useEffect(() => {
@@ -16,9 +16,21 @@ export default function BurgerButton({setActive, isActiveBtn}: BurgerBtnProps) {
   }, [isActiveBtn])
 
   const onSetActive = (): void => {
-    setActive(!isActive)
-    setIsActive(!isActive)
+    const newState = !isActive
+    setActive(newState)
+    setIsActive(newState)
   }
 
-  return <button onClick={onSetActive} className={`burger-button ${isActive ? 'active' : ''} `}><span /></button>
-}
+  return (
+    <button
+      onClick={onSetActive}
+      className={`burger-button ${isActive ? 'active' : ''}`.trim()}
+      aria-label="Меню"
+      aria-expanded={isActive}
+    >
+      <span />
+    </button>
+  )
+})
+
+export default BurgerButton;

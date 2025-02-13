@@ -1,0 +1,15 @@
+.contacts {
+  .contacts__container {
+    @apply flex gap-16 py-32 justify-center;
+    .title {
+      @apply max-w-lg;
+    }
+    form {
+      @apply min-w-96;
+
+      button {
+        @apply mt-10;
+      }
+    }
+  }
+}
