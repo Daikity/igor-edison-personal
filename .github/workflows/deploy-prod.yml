@@ -67,11 +67,11 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd ~/projects/igor-edison-personal
-            rm -rf out/*
-            tar -xzf out.tar.gz
-            rm out.tar.gz
-            rm -rf /var/www/igor-edison-personal.ru/*
-            mv ~/projects/igor-edison-personal/out/* /var/www/igor-edison-personal.ru
+            sudo rm -rf out/*
+            sudo tar -xzf out.tar.gz
+            sudo rm out.tar.gz
+            sudo rm -rf /var/www/igor-edison-personal.ru/*
+            sudo mv ~/projects/igor-edison-personal/out/* /var/www/igor-edison-personal.ru
           port: 22
           protocol: tcp
           timeout: 30s

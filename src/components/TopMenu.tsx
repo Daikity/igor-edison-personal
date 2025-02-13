@@ -20,9 +20,9 @@ export default function TopMenu() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false),
         [menuList, setMenuList] = useState<Menu[]>([
+          { isActive: false, name: 'Home', link: '#home' },
           { isActive: false, name: 'Experience', link: '#experience' },
-          { isActive: false, name: 'Work', link: '#work' },
-          { isActive: false, name: 'Photography', link: '#photography' },
+          { isActive: false, name: 'Skillset', link: '#skillset' },
           { isActive: false, name: 'Contacts', link: '#contact' },
         ])
 
