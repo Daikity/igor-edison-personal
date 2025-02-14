@@ -15,10 +15,6 @@
   --color-violet-accent:  #FBE4FF;
 }
 
-* {
-  box-sizing: content-box;
-}
-
 body {
   color: var(--color-text);
   background: var(--color-base);
@@ -78,5 +74,11 @@ p {
 }
 
 [class*=__container] {
-  @apply max-w-[1440px] mx-auto my-0 px-10;
+  @apply max-w-[1440px] mx-auto my-0 px-5;
+  @include adaptive(tablet) {
+    @apply px-7;
+  }
+  @include adaptive(laptop-s) {
+    @apply px-10;
+  }
 }

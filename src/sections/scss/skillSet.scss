@@ -1,5 +1,13 @@
 .skill-set {
-  @apply py-20;
+
+
+  @include adaptive(mobile-s) {
+    @apply pb-0 pt-20;
+  }
+  @include adaptive(tablet) {
+    @apply py-20;
+  }
+
   .skill-set__container {
     @apply grid;
     @include adaptive(mobile-s) {
