@@ -15,20 +15,35 @@
       @apply py-0;
     }
 
+    @include adaptive(hd-desktop) {
+      @apply pl-[30%];
+    }
+
+    @include adaptive(ultra-hd) {
+      @apply pl-[50%];
+    }
+
     * {
       @apply text-[var(--color-lvl-1)];
     }
   }
 
   img {
+    height: 100%;
     @include adaptive(mobile-s) {
-      @apply max-w-full;
+      @apply max-w-full w-full;
     }
     @include adaptive(laptop-s) {
-      @apply max-w-max;
+      @apply max-w-max w-max;
     }
     @include adaptive(laptop) {
-      @apply max-w-full;
+      @apply max-w-full w-full;
+    }
+    @include adaptive(hd-desktop) {
+      @apply h-auto w-2/3;
+    }
+    @include adaptive(ultra-hd) {
+      @apply h-auto w-1/2;
     }
   }
 }

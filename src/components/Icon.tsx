@@ -1,6 +1,6 @@
 'use client'
 
-import '@/app/scss/_icons.scss'
+import '@/assets/scss/global/_icons.scss'
 import Image from "next/image";
 import React from 'react';
 
