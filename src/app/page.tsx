@@ -23,7 +23,7 @@ export default function Home() {
       <Experience ref={experience} />
       <Philosophy ref={philosophy} />
       <SkillSet ref={skillSet} />
-      <Contacts ref={contacts} />
+      {/* <Contacts ref={contacts} /> */}
     </>
   );
 }

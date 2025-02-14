@@ -1,11 +1,37 @@
 .skill-set {
   @apply py-20;
   .skill-set__container {
-    @apply grid grid-cols-3 gap-20;
+    @apply grid;
+    @include adaptive(mobile-s) {
+      @apply grid-cols-1;
+    }
+    @include adaptive(tablet) {
+      @apply grid-cols-2 gap-10;
+    }
+    @include adaptive(laptop-s) {
+      @apply grid-cols-3 gap-20;
+    }
+    .skills-title {
+      @include adaptive(mobile-s) {
+        @apply mb-10;
+      }
+      @include adaptive(tablet) {
+        @apply col-span-2 mb-0;
+      }
+      @include adaptive(laptop-s) {
+        @apply col-span-1;
+      }
+    }
     .skill-list {
       @apply col-span-2 flex gap-5 flex-wrap;
       .skill-item {
-        @apply max-w-[48%];
+        @include adaptive(mobile-s) {
+          @apply mb-10;
+        }
+
+        @include adaptive(tablet) {
+          @apply max-w-[48%];
+        }
         i {
           @apply mb-3;
         }
