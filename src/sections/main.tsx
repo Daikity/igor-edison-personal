@@ -12,7 +12,7 @@ export default function Main({ref}: {ref: RefObject<null>}) {
   return (
     <div className="title" ref={ref}>
       <div className="photo-container">
-        <Image src={PhotoImg} priority={true} alt="I.EDISON" />
+        <Image src='/image/i_edison.jpg' width={100} height={100} priority={true} alt="I.EDISON" />
         <div className='photo-gradient' />
       </div>
       <div className="title-text">
