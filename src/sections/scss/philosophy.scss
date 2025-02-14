@@ -1,6 +1,34 @@
 .philosophy {
-  @apply grid grid-cols-2 items-center bg-[var(--color-peach-accent)];
-  .text__container * {
-    @apply text-[var(--color-lvl-1)];
+  @apply grid items-center bg-[var(--color-peach-accent)] overflow-hidden;
+  @include adaptive(mobile-s) {
+    @apply grid-cols-1;
+  }
+  @include adaptive(laptop-s) {
+    @apply grid-cols-2;
+  }
+  .text__container {
+    @include adaptive(mobile-s) {
+      @apply py-8;
+    }
+
+    @include adaptive(laptop-s) {
+      @apply py-0;
+    }
+
+    * {
+      @apply text-[var(--color-lvl-1)];
+    }
+  }
+
+  img {
+    @include adaptive(mobile-s) {
+      @apply max-w-full;
+    }
+    @include adaptive(laptop-s) {
+      @apply max-w-max;
+    }
+    @include adaptive(laptop) {
+      @apply max-w-full;
+    }
   }
 }

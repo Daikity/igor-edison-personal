@@ -1,8 +1,18 @@
 .exp {
   @apply flex flex-col max-w-full;
+
+  @include adaptive(tablet) {
+    @apply max-w-full;
+  }
+
   @include adaptive(laptop-s) {
+    @apply max-w-72;
+  }
+
+  @include adaptive(laptop) {
     @apply max-w-sm;
   }
+
   .counter {
     @apply text-9xl leading-tight text-slate-400;
   }
