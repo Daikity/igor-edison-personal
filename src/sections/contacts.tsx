@@ -25,7 +25,7 @@ export default function Contacts({ref}: {ref: RefObject<null>}) {
     event.preventDefault();
     console.log("Отправленные данные:", formData);
 
-    fetch('/send-message', { method: 'POST', body: JSON.stringify(formData) });
+    fetch('http://localhost:5000/send-message', { method: 'POST', body: JSON.stringify(formData) });
 
     setFormData({ name: "", email: "", message: "" }); // Очистка формы
   };
