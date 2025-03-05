@@ -16,3 +16,9 @@ export interface Translations {
   en: string
   ru: string
 }
+
+export interface FormData {
+  name: string
+  email: string
+  message: string
+}
