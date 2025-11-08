@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 interface TextProps {
   type: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
   text?: string;
-  className?: 'body' | 'body-s' | 'overline' | 'button';
+  className?: 'body' | 'body-s' | 'overline' | 'button' | 'hidden';
   html?: string;
 }
 

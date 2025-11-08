@@ -1,4 +1,4 @@
-.skill-set {
+section.skill-set {
 
 
   @include adaptive(mobile-s) {
@@ -9,6 +9,7 @@
   }
 
   .skill-set__container {
+    padding-top: 1rem;
     @apply grid;
     @include adaptive(mobile-s) {
       @apply grid-cols-1;

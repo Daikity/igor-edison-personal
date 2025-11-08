@@ -15,10 +15,18 @@
   --color-violet-accent:  #FBE4FF;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-text);
   background: var(--color-base);
   font-family: Sen, sans-serif;
+}
+
+.hidden {
+  display: none;
 }
 
 main {

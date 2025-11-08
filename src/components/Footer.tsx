@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="flex flex-col gap-4 footer__container">
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between items-center">
           <LogoText size='l' />
           <div className="flex gap-2 items-start pt-1">
             <a href="https://t.me/Edison_io">

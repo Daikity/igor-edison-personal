@@ -10,7 +10,7 @@ export default function Main({ref}: {ref: RefObject<null>}) {
   const { main } = texts.en;
 
   return (
-    <div className="title" ref={ref}>
+    <main className="title" ref={ref}>
       <div className="photo-container">
         <Image src='/image/i_edison.jpg' width={100} height={100} priority={true} alt="I.EDISON" />
         <div className='photo-gradient' />
@@ -26,6 +26,6 @@ export default function Main({ref}: {ref: RefObject<null>}) {
           {main.description2}
         </p>
       </div>
-    </div>
+    </main>
   );
 }

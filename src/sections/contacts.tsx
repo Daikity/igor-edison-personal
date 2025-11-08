@@ -25,13 +25,13 @@ export default function Contacts({ref}: {ref: RefObject<null>}) {
     event.preventDefault();
     console.log("Отправленные данные:", formData);
 
-    fetch('/send-message', { method: 'POST', body: JSON.stringify(formData) });
+    fetch('/api/send-message', { method: 'POST', body: JSON.stringify(formData) });
 
     setFormData({ name: "", email: "", message: "" }); // Очистка формы
   };
 
   return (
-    <div className="contacts" ref={ref}>
+    <div className="contacts" ref={ref} id='contact'>
       <div className="contacts__container">
         <div className="title">
           <Text type='h3' text={contacts.title} />

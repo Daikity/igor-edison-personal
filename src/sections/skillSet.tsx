@@ -1,4 +1,3 @@
-
 'use client'
 
 import './scss/skillSet.scss';
@@ -13,7 +12,8 @@ export default function SkillSet({ref}: {ref: RefObject<null>}) {
   const { skillSet } = experience;
 
   return (
-    <div ref={ref} className='skill-set'>
+    <section ref={ref} className='skill-set' id='skillset'>
+      <Text type='h2' className="hidden" text={skillSet.title} />
       <div className="skill-set__container">
         <div className='skills-title'>
           <Text type='h3' text={skillSet.title} />
@@ -31,6 +31,6 @@ export default function SkillSet({ref}: {ref: RefObject<null>}) {
           }
         </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -219,6 +219,7 @@ export const texts = {
       copyright: "© 2024 • Igor Edison."
     },
     metadata: {
+      keywords: 'developer, portfolio, frontend, react, nextjs',
       title: "Igor Edison",
       description: "Personal page about me"
     }
