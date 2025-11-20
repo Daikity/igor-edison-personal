@@ -139,6 +139,15 @@ const layoutDescriptin: Translations = {
 
 export const texts = {
   en: {
+    base_texts: {
+      message_success: 'The message was sent successfully',
+      message_error: {
+        name: 'Name must be between 2 and 50 characters long.',
+        email: 'Please enter a valid email address.',
+        message: 'Message must be between 10 and 1000 characters long.',
+        telegram: 'Please enter the link to your telegram starting from @',
+      },
+    },
     experience: {
       title: 'work experience' as string,
       subtitle: "Companies I have worked for in the past" as string,

@@ -6,6 +6,8 @@
 .pnp.*
 .yarn/*
 .vscode
+.cursor
+.idea
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases

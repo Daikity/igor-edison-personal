@@ -22,3 +22,19 @@ export interface FormData {
   email: string
   message: string
 }
+
+export type ButtonProps = {
+  text?: string,
+  iconLeft?: string,
+  iconRight?: string,
+  color?: string,
+  type?: 'submit' | 'reset' | 'button',
+  disabled?: boolean,
+}
+
+export type ValidateFields = {
+  isValid: boolean;
+  message: string;
+  field: string;
+  code: number;
+}

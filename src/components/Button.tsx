@@ -1,20 +1,18 @@
 'use client'
 
 import './scss/button.scss';
-import { texts } from '@/app/i18n';
 import Text from '@/components/Text'
 import Icon from './Icon';
+import {ButtonProps} from "@/app/types";
 
 export default function Button({
-  text, iconLeft, iconRight, color, type}:
-  {text?: string, iconLeft?: string, iconRight?: string, color?: string, type?: 'submit' | 'reset' | 'button'}
+  text, iconLeft, iconRight, color, type, disabled}: ButtonProps
 ) {
-  const { } = texts.en;
-
   return (
     <button
       className='button'
       type={type || 'submit'}
+      disabled={disabled}
       style={{backgroundColor: color || 'var(--color-primary)'}}
     >
       {iconLeft ? <Icon name={iconLeft} isImage={false} /> : null }
