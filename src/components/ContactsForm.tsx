@@ -15,6 +15,7 @@ export default function ContactsForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    telegram: "",
     message: "",
   });
 
@@ -60,7 +61,7 @@ export default function ContactsForm() {
 
       if (data.code >= 200 && data.code < 400) {
         showToast(data.message || texts.en.base_texts.message_success, 'success');
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", telegram: "", message: "" });
       } else {
         showToast(data.message || 'Произошла ошибка при отправке сообщения.', 'error');
       }
@@ -75,9 +76,10 @@ export default function ContactsForm() {
   return (
     <>
       <form onSubmit={sendMessage}>
-        <Input label={contacts.form.name} name="name" value={formData.name} type="text" onChange={handleChange} />
-        <Input name="email" label={contacts.form.email} value={formData.email} type="text" onChange={handleChange} />
-        <Input name="message" label={contacts.form.message} value={formData.message} type="textarea" onChange={handleChange} />
+        <Input label={contacts.form.name} name="name" value={formData.name} type="text" placeholder={contacts.form.placeholders.name} onChange={handleChange} />
+        <Input name="email" label={contacts.form.email} value={formData.email} type="text" placeholder={contacts.form.placeholders.email} onChange={handleChange} />
+        <Input name="telegram" label={contacts.form.telegram} value={formData.telegram} type="text" placeholder={contacts.form.placeholders.telegram} onChange={handleChange} />
+        <Input name="message" label={contacts.form.message} value={formData.message} type="textarea" placeholder={contacts.form.placeholders.message} onChange={handleChange} />
         <Button disabled={isLoading} text={isLoading ? 'Отправка...' : contacts.form.button} type="submit" />
       </form>
       <Toast

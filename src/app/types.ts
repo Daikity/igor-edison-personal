@@ -20,6 +20,7 @@ export interface Translations {
 export interface FormData {
   name: string
   email: string
+  telegram: string
   message: string
 }
 

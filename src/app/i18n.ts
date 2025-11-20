@@ -220,8 +220,15 @@ export const texts = {
       form: {
         name: 'Name',
         email: 'Email',
+        telegram: 'Telegram',
         message: 'Message',
-        button: "Let's get start"
+        button: "Let's get start",
+        placeholders: {
+          name: 'Enter your name',
+          email: 'Enter your email',
+          telegram: '@your_telegram',
+          message: 'Enter your message'
+        }
       },
     },
     footer: {
