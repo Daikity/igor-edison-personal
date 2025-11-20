@@ -1,23 +1,34 @@
 'use client'
 
 import '@/components/scss/exp.scss'
+import Text from '@/components/Text';
+import { ExperienceData } from '@/app/types';
+import React from 'react';
 
-interface Props {
-  roleInCompany: string,
-  companyName: string,
-  shortDescriptionWork: string,
-  counter: string | number,
-  companyColor?: string
-}
+// Оптимизируем с помощью React.memo для предотвращения ненужных ререндеров
+const Exp = React.memo(function Exp(
+  {
+    roleInCompany,
+    companyName,
+    companyColor = '#fff',
+    shortDescriptionWork,
+    counter
+  }: ExperienceData
+) {
 
-export default function Exp({roleInCompany, companyName, companyColor, shortDescriptionWork, counter}: Props) {
   return (
     <div className="exp">
       <span className="counter">
         {counter}
       </span>
-      <h4><span style={{ color: companyColor || '#fff' }}>{companyName}</span>, {roleInCompany}</h4>
-      <p>{shortDescriptionWork}</p>
+      <h4>
+        <span style={{ color: companyColor }}>{companyName}</span>
+        {', '}
+        {roleInCompany}
+      </h4>
+      <Text type='p' text={shortDescriptionWork} />
     </div>
   )
-}
+})
+
+export default Exp;

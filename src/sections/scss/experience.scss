@@ -1,6 +1,9 @@
 .experience {
   & {
-    @apply w-full bg-black py-32;
+    @apply w-full bg-black pb-12;
+    @include adaptive(laptop-s) {
+      @apply py-32;
+    }
   }
 
   h2 {
@@ -11,6 +14,9 @@
   }
 
   .exp-list {
-    @apply flex items-start justify-between;
+    @apply flex items-start justify-between flex-col;
+    @include adaptive(laptop-s) {
+      @apply flex-row;
+    }
   }
 }

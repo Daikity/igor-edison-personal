@@ -1,25 +1,31 @@
-import '@/assets/scss/home.scss';
+'use client'
+
+import '@/sections/scss/home.scss';
 import Image from "next/image";
 import PhotoImg from '@/assets/image/i_edison.jpg'
 import { RefObject } from 'react';
+import { texts } from '@/app/i18n';
 
 export default function Main({ref}: {ref: RefObject<null>}) {
+  const { main } = texts.en;
+
   return (
-    <div className="title" ref={ref}>
-      <Image src={PhotoImg} alt="I.EDISON" width={750} height={650} />
+    <main className="title" ref={ref}>
+      <div className="photo-container">
+        <Image src='/image/i_edison.jpg' width={100} height={100} priority={true} alt="I.EDISON" />
+        <div className='photo-gradient' />
+      </div>
       <div className="title-text">
         <h1>
-          {`I'm Igor Edison.`} <br />
-          A web-developer <br />
-          <span style={{ color: '#6b7280' }}>based in Russia.</span>
+          {main.name} <br />
+          {main.role} <br />
+          <span style={{ color: '#6b7280' }}>{main.location}</span>
         </h1>
         <p>
-          {`I'm one of the most active web developers you have ever worked
-          with.`} <br />
-          {`If you have a great project that requires professional skills,
-          then I'm your guy.`}
+          {main.description1} <br />
+          {main.description2}
         </p>
       </div>
-    </div>
+    </main>
   );
 }

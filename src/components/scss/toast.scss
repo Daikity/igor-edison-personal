@@ -1,0 +1,101 @@
+@use '@/assets/scss/global/mixins' as *;
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 16px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  max-width: calc(100vw - 40px);
+
+  @include adaptive(mobile-s) {
+    right: 20px;
+    left: auto;
+    max-width: calc(100vw - 40px);
+  }
+
+  &--success {
+    background: var(--color-green-accent);
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &--error {
+    background: var(--color-red-error);
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__content {
+    flex: 0 1 auto;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__close {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast[data-closing="true"] {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
