@@ -9,10 +9,10 @@ interface RequestOptions<B> {
   axiosConfig?: AxiosRequestConfig;
 }
 
+const apiUrl: string = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : 'https://igor-edison-personal.ru/api';
+
 const fetchApi = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5001'
-    : 'http://localhost:5000'),
+  baseURL: apiUrl,
   headers: {
     'Content-Type': 'application/json',
   },

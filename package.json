@@ -4,10 +4,9 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "scripts": {
-    "dev": "cross-env NEXT_PUBLIC_API_URL=http://localhost:5001 next dev --turbopack",
+    "dev": "cross-env NODE_ENV=development next dev --turbopack",
     "build": "next build",
-    "start": "cross-env NEXT_PUBLIC_API_URL=http://localhost:5000 next start",
-    "start": "next start",
+    "start": "cross-env next start",
     "lint": "next lint",
     "export": "next export"
   },
