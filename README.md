@@ -80,5 +80,5 @@ docker compose up -d --build
 
 ## Дальше по плану
 
-- Демо `/demos/<id>/` (FlowCRM, ShopAdmiin)
+- Полировка деплоя / SEO (этап 6)
 - Карточки Kwork / Upwork (заказ через биржи)
