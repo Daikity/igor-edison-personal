@@ -70,9 +70,12 @@ export default function ContactsForm({ form, messages }: ContactsFormProps) {
     }
 
     try {
-      const data: ValidateFields = await sendRequest('/send-message', {
+      const data: ValidateFields = await sendRequest('/api/send-message/', {
         method: 'POST',
-        body: formData,
+        body: {
+          ...formData,
+          company: honeypot?.value ?? '',
+        },
       });
 
       if (data.code >= 200 && data.code < 400) {

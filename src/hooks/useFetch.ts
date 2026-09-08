@@ -1,45 +1,36 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 interface RequestOptions<B> {
   method?: RequestMethod;
   body?: B;
   headers?: Record<string, string>;
-  axiosConfig?: AxiosRequestConfig;
 }
 
-const apiUrl: string = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : 'https://igor-edison-personal.ru/api';
-
-const fetchApi = axios.create({
-  baseURL: apiUrl,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-export async function sendRequest<T, B = any>(
+/** Относительные запросы к API того же origin (Next Route Handlers) */
+export async function sendRequest<T, B = unknown>(
   url: string,
   options: RequestOptions<B> = {}
 ): Promise<T> {
-  const { method = 'GET', body, headers, axiosConfig } = options;
+  const { method = 'GET', body, headers } = options;
 
-  const config: AxiosRequestConfig = {
-    url,
+  const response = await fetch(url, {
     method,
     headers: {
       'Content-Type': 'application/json',
       ...headers,
     },
-    data: body,
-    ...axiosConfig,
-  };
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  });
 
-  try {
-    const res: AxiosResponse<T> = await fetchApi(config);
-    return res.data;
-  } catch (error) {
-    console.error('Error during fetch:', error);
+  const data = (await response.json()) as T;
+
+  if (!response.ok) {
+    const error = new Error('API request failed') as Error & {
+      response?: { status: number; data: T };
+    };
+    error.response = { status: response.status, data };
     throw error;
   }
+
+  return data;
 }

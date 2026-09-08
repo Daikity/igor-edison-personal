@@ -6,45 +6,55 @@
 
 - Серверные секции (RSC): hero, опыт, философия, навыки, контакты
 - Локали: `/` (ru), `/en/`, `/de/` + переключатель языка
-- SEO: metadata, canonical, hreflang, `sitemap.xml`, `robots.txt`, JSON-LD (Person, WebSite)
-- Контактная форма с honeypot и опциональным Telegram (API бэка — этап 2 перенесёт внутрь Next)
+- SEO: metadata, canonical, hreflang, `sitemap.xml`, `robots.txt`, JSON-LD
+- API внутри Next: контакты → MongoDB + Telegram, список проектов, защищённый просмотр заявок
+- `output: 'standalone'` — готовность к Docker
 
 ## Стек
 
 - Next.js 15, React 19, TypeScript
-- Tailwind CSS + SCSS modules/sections
-- Axios (форма)
+- MongoDB + Mongoose
+- Tailwind CSS + SCSS
 
 ## Структура
 
 ```
 src/
   app/[locale]/     # страницы и layout локали
+  app/api/           # Route Handlers
   content/           # словари ru / en / de
-  i18n/              # конфиг локалей, getDictionary
-  sections/          # серверные секции лендинга
-  components/        # UI (client только где нужно)
-  middleware.ts      # rewrite ru без префикса
+  i18n/              # конфиг локалей
+  lib/               # db, telegram, validators, projects
+  sections/          # серверные секции
+  components/        # UI
+  middleware.ts
 ```
+
+## API
+
+| Метод | Путь | Доступ |
+|-------|------|--------|
+| POST | `/api/send-message` | публичный (honeypot + валидация) |
+| GET | `/api/projects` | публичный (читает `portfolio.project.json`) |
+| GET | `/api/requests` | только с заголовком `x-admin-secret` |
 
 ## Запуск
 
 ```bash
+cp .env.example .env.local
+# заполнить MONGO_URI, при необходимости BOT_TOKEN / CHAT_ID / ADMIN_SECRET
+
 npm install
+# MongoDB должна быть доступна
 npm run dev
 ```
 
-Открыть [http://localhost:3000](http://localhost:3000) (русский), `/en/`, `/de/`.
+Открыть [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build
 npm start
 ```
-
-## Переменные окружения
-
-На этапе 1 форма ходит на внешний API (`localhost:5001` в dev).  
-Полный `.env` появится на этапе переноса API в Next.
 
 ## Домен
 
@@ -52,6 +62,5 @@ npm start
 
 ## Дальше по плану
 
-- API контактов внутри Next + Mongo/Telegram
 - Витрина проектов и кейсы `/work/[slug]`
 - Docker Compose и демо `/demos/<id>/`
