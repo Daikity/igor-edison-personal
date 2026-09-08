@@ -1,0 +1,20 @@
+.top-menu {
+  @apply w-full left-0 top-0 z-[4] fixed;
+  .header__container {
+    @apply flex justify-between items-center gap-14 min-h-20;
+
+    // Только основная навигация, не language-switcher
+    > .header__nav > ul {
+      @include adaptive(mobile-s) {
+        @apply hidden;
+      }
+      @include adaptive(laptop-s) {
+        @apply flex;
+      }
+
+      li {
+        @apply transition-all cursor-pointer py-8 px-6 hover:bg-blue-800;
+      }
+    }
+  }
+}

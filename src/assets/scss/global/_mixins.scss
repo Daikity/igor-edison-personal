@@ -1,0 +1,14 @@
+@use "sass:map";
+@use '@/assets/scss/global/variables' as *;
+
+@mixin adaptive($breakpoint-name) {
+  @if map.has-key($breakpoints, $breakpoint-name) {
+    $breakpoint: map.get($breakpoints, $breakpoint-name);  // Получаем значение брейкпоинта
+
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @warn "Нет такого брейкпоинта: #{$breakpoint-name}";
+  }
+}

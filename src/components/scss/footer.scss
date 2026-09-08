@@ -1,0 +1,71 @@
+footer {
+  background: var(--color-lvl-1);
+  @apply py-10;
+
+  .footer__container {
+    @apply flex flex-col gap-8;
+  }
+
+  .footer__top {
+    @apply flex w-full flex-col gap-8;
+
+    @include adaptive(tablet) {
+      @apply flex-row justify-between items-start gap-12;
+    }
+  }
+
+  .footer__brand {
+    @apply flex flex-col gap-2 max-w-sm;
+  }
+
+  .footer__tagline {
+    @apply text-sm text-white/55 m-0;
+  }
+
+  .footer__skills {
+    @apply text-sm text-white/40 m-0;
+  }
+
+  .footer__columns {
+    @apply flex flex-wrap gap-10;
+  }
+
+  .footer__heading {
+    @apply text-xs uppercase tracking-wider text-white/40 m-0 mb-3;
+  }
+
+  .footer__nav ul {
+    @apply flex flex-col gap-2 m-0 p-0 list-none;
+
+    a {
+      @apply text-sm text-white/75 no-underline transition-colors;
+
+      &:hover {
+        @apply text-white;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+
+  .footer__social-links {
+    @apply flex flex-col gap-2;
+
+    a {
+      @apply inline-flex items-center gap-2 text-sm text-white/75 no-underline transition-colors;
+
+      &:hover {
+        @apply text-white;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .footer__copyright {
+    @apply text-sm text-white/40 m-0 pt-2 border-t border-white/10;
+  }
+}

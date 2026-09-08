@@ -1,0 +1,91 @@
+.home {
+  @apply relative bg-black;
+  @include adaptive(mobile-s) {
+    @apply -translate-y-28;
+  }
+  @include adaptive(tablet) {
+    @apply pt-0 pb-20 -translate-y-0;
+  }
+  @include adaptive(laptop) {
+    @apply pt-14;
+  }
+  .title {
+    @apply flex justify-stretch;
+
+    @include adaptive(mobile-s) {
+      @apply flex-col gap-14;
+    }
+    @include adaptive(tablet) {
+      @apply flex-row;
+    }
+    @include adaptive(laptop-l) {
+      @apply items-center justify-center;
+    }
+
+    .title-text {
+      flex: 0 1 55%;
+      @apply z-[3] text-white;
+
+      @include adaptive(mobile-s) {
+        @apply px-5;
+      }
+      @include adaptive(tablet) {
+        @apply absolute top-1/3 right-8 w-3/5 px-0 pt-0;
+      }
+      @include adaptive(laptop) {
+        transform: translate(0, 0);
+        @apply relative flex flex-col justify-center;
+      }
+      @include adaptive(laptop-l) {
+        flex: 0 0 738px;
+        @apply relative -translate-x-11;
+      }
+    }
+
+    .photo-container {
+      height: 100rem;
+
+      @apply max-w-[750px] max-h-[650px] relative z-[2];
+
+      @include adaptive(mobile-s) {
+        @apply flex-col ;
+      }
+
+      @include adaptive(mobile-s) {
+        @apply flex-col ;
+      }
+
+      @include adaptive(tablet) {
+        width: 100rem;
+        @apply -translate-x-48 ;
+      }
+
+      @include adaptive(laptop-l) {
+        transform: translate(0, 0);
+      }
+
+      img {
+        object-fit: cover;
+        @apply absolute z-[2] w-full h-full top-0 left-0;
+      }
+
+      .photo-gradient {
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0) 20%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+        @apply absolute z-[3] w-full h-full top-0 left-0;
+        @include adaptive(laptop-l) { display: none; }
+      }
+    }
+
+    &::after {
+      background-color: var(--color-lvl-1);
+      @include adaptive(laptop-l) {
+        content: "";
+      }
+      @apply absolute z-[1] -top-24 bottom-0 left-1/3 right-0;
+    }
+  }
+}

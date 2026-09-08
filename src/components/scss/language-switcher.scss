@@ -1,0 +1,44 @@
+.language-switcher {
+  @apply relative z-[5];
+
+  &__trigger {
+    @apply text-sm uppercase tracking-wide text-white/70 hover:text-white transition-colors;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    line-height: 1.2;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  &__menu {
+    @apply absolute right-0 top-full z-10;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    min-width: auto;
+
+    li {
+      margin: 0;
+      padding: 0.2rem 0;
+      line-height: 1.2;
+
+      a {
+        @apply block text-sm uppercase tracking-wide text-white/70;
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        line-height: 1.2;
+        background: transparent;
+
+        &:hover {
+          color: #60a5fa;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+      }
+    }
+  }
+}

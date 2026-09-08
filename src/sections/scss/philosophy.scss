@@ -1,0 +1,51 @@
+.philosophy {
+  @apply grid items-center bg-[var(--color-peach-accent)] overflow-hidden;
+  @include adaptive(mobile-s) {
+    @apply grid-cols-1;
+  }
+  @include adaptive(laptop-s) {
+    @apply grid-cols-2;
+  }
+  .text__container {
+    @apply flex flex-col gap-2;
+
+    @include adaptive(mobile-s) {
+      @apply py-8 px-6;
+    }
+
+    @include adaptive(laptop-s) {
+      @apply pt-8 pb-12 px-8 gap-2.5;
+    }
+
+    @include adaptive(hd-desktop) {
+      @apply pl-[30%] pr-10;
+    }
+
+    @include adaptive(ultra-hd) {
+      @apply pl-[50%];
+    }
+
+    * {
+      @apply text-[var(--color-lvl-1)];
+    }
+  }
+
+  img {
+    height: 100%;
+    @include adaptive(mobile-s) {
+      @apply max-w-full w-full;
+    }
+    @include adaptive(laptop-s) {
+      @apply max-w-max w-max;
+    }
+    @include adaptive(laptop) {
+      @apply max-w-full w-full;
+    }
+    @include adaptive(hd-desktop) {
+      @apply h-auto w-2/3;
+    }
+    @include adaptive(ultra-hd) {
+      @apply h-auto w-1/2;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.contacts {
+  .contacts__container {
+    @apply flex flex-col gap-16 py-24 justify-center;
+    @include adaptive(tablet) {
+      @apply flex-row py-32;
+    }
+    .title {
+      @apply max-w-lg;
+    }
+    form {
+      @include adaptive(tablet) {
+        @apply min-w-96;
+      }
+
+      button {
+        @apply mt-10;
+      }
+    }
+  }
+}
