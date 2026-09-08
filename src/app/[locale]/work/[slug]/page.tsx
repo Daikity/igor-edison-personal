@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
-import { getWorkCase, workSlugs } from '@/content/work';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { getWorkCaseView } from '@/lib/projects';
 import {
   SITE_URL,
   isLocale,
@@ -13,11 +14,8 @@ import {
 } from '@/i18n/config';
 import './work.scss';
 
-export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    workSlugs.map((slug) => ({ locale, slug }))
-  );
-}
+// Кейсы читаются из манифестов проектов в рантайме
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -27,7 +25,7 @@ export async function generateMetadata({
   const { locale: localeParam, slug } = await params;
   if (!isLocale(localeParam)) return {};
 
-  const work = getWorkCase(slug, localeParam);
+  const work = await getWorkCaseView(slug, localeParam);
   if (!work) return {};
 
   const canonical = `${SITE_URL}${localePath(localeParam, `/work/${slug}`)}`;
@@ -62,9 +60,11 @@ export default async function WorkCasePage({
   if (!isLocale(localeParam)) notFound();
 
   const locale = localeParam as Locale;
-  const work = getWorkCase(slug, locale);
+  const work = await getWorkCaseView(slug, locale);
   if (!work) notFound();
 
+  const dict = await getDictionary(locale);
+  const labels = dict.workCase;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -87,7 +87,7 @@ export default async function WorkCasePage({
       <JsonLd data={jsonLd} />
       <div className="work-case__container">
         <Link className="work-case__back" href={`${localePath(locale)}#projects`}>
-          ← {work.backLabel}
+          ← {labels.backLabel}
         </Link>
 
         <header className="work-case__header">
@@ -101,24 +101,24 @@ export default async function WorkCasePage({
         </header>
 
         <section className="work-case__block">
-          <h2>{work.problemLabel}</h2>
+          <h2>{labels.problemLabel}</h2>
           <p>{work.problem}</p>
         </section>
         <section className="work-case__block">
-          <h2>{work.solutionLabel}</h2>
+          <h2>{labels.solutionLabel}</h2>
           <p>{work.solution}</p>
         </section>
         <section className="work-case__block">
-          <h2>{work.resultLabel}</h2>
+          <h2>{labels.resultLabel}</h2>
           <p>{work.result}</p>
         </section>
 
         <div className="work-case__actions">
           <a className="work-case__btn work-case__btn--primary" href={`${work.demoBase}/`}>
-            {work.demoCta}
+            {labels.demoCta}
           </a>
           <Link className="work-case__btn" href={contactHref}>
-            {work.contactCta}
+            {labels.contactCta}
           </Link>
         </div>
       </div>

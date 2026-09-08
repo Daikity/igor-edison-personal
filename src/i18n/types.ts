@@ -44,6 +44,14 @@ export interface Dictionary {
     openDemo: string;
     statusOnline: string;
   };
+  workCase: {
+    demoCta: string;
+    contactCta: string;
+    backLabel: string;
+    problemLabel: string;
+    solutionLabel: string;
+    resultLabel: string;
+  };
   contacts: {
     title: string;
     description: string;

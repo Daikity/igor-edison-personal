@@ -1,9 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, localePath, locales } from '@/i18n/config';
-import { workSlugs } from '@/content/work';
+import { listWorkSlugs } from '@/lib/projects';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = 'force-dynamic';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const workSlugs = await listWorkSlugs();
 
   const homeEntries = locales.map((locale) => ({
     url: `${SITE_URL}${localePath(locale)}`,

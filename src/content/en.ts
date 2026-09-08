@@ -107,6 +107,14 @@ const dictionary: Dictionary = {
     openDemo: 'Open demo',
     statusOnline: 'Online',
   },
+  workCase: {
+    demoCta: 'Open demo',
+    contactCta: 'Discuss a similar project',
+    backLabel: 'All projects',
+    problemLabel: 'Problem',
+    solutionLabel: 'Solution',
+    resultLabel: 'Result',
+  },
   contacts: {
     title: "Let's get started",
     description:
