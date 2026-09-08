@@ -43,7 +43,7 @@ src/
 
 ## Запуск (рекомендуемый — Docker)
 
-Из корня `portfolio/`:
+Из корня `portfolio-stack/`:
 
 ```bash
 cp .env.example .env
