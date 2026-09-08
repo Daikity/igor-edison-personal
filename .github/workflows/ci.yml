@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop, 'perf/**']
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Сборка (standalone)
+        run: npm run build
+        env:
+          # Сборка не требует живого Mongo; env только чтобы не падать на import
+          MONGO_URI: mongodb://127.0.0.1:27017
+          MONGO_DB: portfolio
+          ADMIN_SECRET: ci-placeholder

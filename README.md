@@ -1,21 +1,17 @@
 # Igor Edison — персональный портфолио-лендинг
 
-Сайт-визитка фронтенд-разработчика на **Next.js 15** (App Router) с SSR, SEO и локализацией **ru / en / de** (дефолт — `ru`).
+Сайт-визитка фронтенд-разработчика. Рантайм в проде — **только Docker Compose** из корня `portfolio/` (Next `standalone` за nginx-прокси).
+
+Стек: **Next.js 15** (App Router / RSC), React 19, TypeScript, MongoDB, Tailwind + SCSS.  
+Локали: **ru** (дефолт, без префикса), **en**, **de**. Домен: `https://igor-edison-personal.ru`.
 
 ## Возможности
 
-- Серверные секции (RSC): hero, опыт, философия, **проекты**, навыки, контакты
-- Кейсы `/work/flowcrm`, `/work/shopadmin` (ru/en/de) + SEO metadata/hreflang/JSON-LD
-- Локали: `/` (ru), `/en/`, `/de/` + переключатель языка
-- SEO: metadata, canonical, hreflang, `sitemap.xml`, `robots.txt`, JSON-LD
-- API внутри Next: контакты → MongoDB + Telegram, список проектов, защищённый просмотр заявок
-- `output: 'standalone'` — готовность к Docker
-
-## Стек
-
-- Next.js 15, React 19, TypeScript
-- MongoDB + Mongoose
-- Tailwind CSS + SCSS
+- SSR-секции: hero, опыт, философия, проекты, навыки, контакты
+- Кейсы `/work/flowcrm`, `/work/shopadmin` (+ `/en/...`, `/de/...`)
+- SEO: `generateMetadata`, canonical, hreflang, sitemap, robots, JSON-LD
+- API в Next: контакты → Mongo + Telegram; реестр проектов; admin requests
+- Живые демо: `/demos/flowcrm/`, `/demos/shopadmin/` (через корневой proxy)
 
 ## Структура
 
@@ -24,10 +20,10 @@ src/
   app/[locale]/     # страницы и layout локали
   app/api/           # Route Handlers
   content/           # словари ru / en / de
-  i18n/              # конфиг локалей
+  i18n/              # конфиг локалей + SITE_URL
   lib/               # db, telegram, validators, projects
   sections/          # серверные секции
-  components/        # UI
+  components/        # UI (client-островки)
   middleware.ts
 ```
 
@@ -36,49 +32,42 @@ src/
 | Метод | Путь | Доступ |
 |-------|------|--------|
 | POST | `/api/send-message` | публичный (honeypot + валидация) |
-| GET | `/api/projects` | публичный (читает `portfolio.project.json`) |
-| GET | `/api/requests` | только с заголовком `x-admin-secret` |
+| GET | `/api/projects` | публичный (`portfolio.project.json`) |
+| GET | `/api/requests` | заголовок `x-admin-secret` |
 
-## Запуск (локально без Docker)
+Старый `igor_edison_back` удалён (API в Next).
 
-```bash
-cp .env.example .env.local
-# заполнить MONGO_URI, при необходимости BOT_TOKEN / CHAT_ID / ADMIN_SECRET
+## Env
 
-npm install
-# MongoDB должна быть доступна
-npm run dev
-```
+См. `.env.example`: `MONGO_URI`, `MONGO_DB`, `BOT_TOKEN`, `CHAT_ID`, `ADMIN_SECRET`, `PROJECTS_ROOT`.
 
-Открыть [http://localhost:3000](http://localhost:3000).
+## Запуск (рекомендуемый — Docker)
+
+Из корня `portfolio/`:
 
 ```bash
-npm run build
-npm start
-```
-
-## Docker
-
-Сборка: multi-stage `Dockerfile` → `output: 'standalone'`.
-
-Оркестрация — из корня `portfolio/`:
-
-```bash
-cd ..
 cp .env.example .env
 node scripts/portfolio-sync.mjs
 docker compose up -d --build
 ```
 
-В контейнере: `PROJECTS_ROOT=/projects` (volume с манифестами), Mongo — сервис `mongo`.
+Открыть [http://localhost](http://localhost). Подробности: [корневой README](../README.md).
 
-Подробности: корневой [README](../README.md).
+## Локальная разработка без Docker
 
-## Домен
+```bash
+cp .env.example .env.local
+npm install
+# нужен MongoDB
+npm run dev
+```
 
-Прод: `https://igor-edison-personal.ru`
+[http://localhost:3000](http://localhost:3000) · `npm run build` → standalone.
 
-## Дальше по плану
+## CI
 
-- Полировка деплоя / SEO (этап 6)
+GitHub Actions: только `npm ci` + `npm run build` (без static `out/` deploy).
+
+## Дальше
+
 - Карточки Kwork / Upwork (заказ через биржи)
