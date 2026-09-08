@@ -39,7 +39,7 @@ src/
 | GET | `/api/projects` | публичный (читает `portfolio.project.json`) |
 | GET | `/api/requests` | только с заголовком `x-admin-secret` |
 
-## Запуск
+## Запуск (локально без Docker)
 
 ```bash
 cp .env.example .env.local
@@ -57,11 +57,28 @@ npm run build
 npm start
 ```
 
+## Docker
+
+Сборка: multi-stage `Dockerfile` → `output: 'standalone'`.
+
+Оркестрация — из корня `portfolio/`:
+
+```bash
+cd ..
+cp .env.example .env
+node scripts/portfolio-sync.mjs
+docker compose up -d --build
+```
+
+В контейнере: `PROJECTS_ROOT=/projects` (volume с манифестами), Mongo — сервис `mongo`.
+
+Подробности: корневой [README](../README.md).
+
 ## Домен
 
 Прод: `https://igor-edison-personal.ru`
 
 ## Дальше по плану
 
-- Docker Compose и демо `/demos/<id>/`
+- Демо `/demos/<id>/` (FlowCRM, ShopAdmiin)
 - Карточки Kwork / Upwork (заказ через биржи)
