@@ -138,7 +138,7 @@ export default async function LocaleLayout({
           <TopMenu locale={locale} menuLabels={dict.menu} />
         </header>
         <main>{children}</main>
-        <Footer footer={dict.footer} menu={dict.menu} />
+        <Footer locale={locale} footer={dict.footer} menu={dict.menu} />
       </body>
     </html>
   );

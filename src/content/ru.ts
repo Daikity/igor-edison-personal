@@ -10,6 +10,7 @@ const dictionary: Dictionary = {
   menu: {
     home: 'Главная',
     experience: 'Опыт',
+    projects: 'Проекты',
     skillset: 'Навыки',
     contacts: 'Контакты',
   },
@@ -97,6 +98,13 @@ const dictionary: Dictionary = {
           'Освоил вёрстку через HTML и CSS — от простых макетов до адаптивного и кроссбраузерного дизайна. Препроцессоры, Flexbox, Grid и современные методологии помогают собирать сложные интерфейсы.',
       },
     ],
+  },
+  projects: {
+    title: 'Проекты',
+    subtitle: 'Живые демо и разбор решений — можно открыть и пройтись по интерфейсу.',
+    openCase: 'Смотреть кейс',
+    openDemo: 'Открыть демо',
+    statusOnline: 'Онлайн',
   },
   contacts: {
     title: 'Давайте начнём',

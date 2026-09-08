@@ -6,10 +6,11 @@ import ModalMenu from './ModalMenu';
 import BurgerButton from './BurgerButton';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useState, useEffect, useCallback, useMemo, memo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import useScrollPosition from '@react-hook/window-scroll';
 import useToggle from '../hooks/useToggle';
 import { useScrollHandler } from '@/hooks/useScrollHandler';
-import type { Locale } from '@/i18n/config';
+import { localePath, type Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/types';
 
 interface MenuItem {
@@ -24,18 +25,23 @@ type TopMenuProps = {
 };
 
 function TopMenuContent({ locale, menuLabels }: TopMenuProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = !pathname.includes('/work');
+
   const initialMenu = useMemo<MenuItem[]>(
     () => [
-      { isActive: true, name: menuLabels.home, link: '#home' },
+      { isActive: isHomePage, name: menuLabels.home, link: '#home' },
       { isActive: false, name: menuLabels.experience, link: '#experience' },
+      { isActive: !isHomePage, name: menuLabels.projects, link: '#projects' },
       { isActive: false, name: menuLabels.skillset, link: '#skillset' },
       { isActive: false, name: menuLabels.contacts, link: '#contact' },
     ],
-    [menuLabels]
+    [menuLabels, isHomePage]
   );
 
   const scrollY: number = useScrollPosition();
-  const [isFillBackground, setIsFillBackground] = useState(false);
+  const [isFillBackground, setIsFillBackground] = useState(!isHomePage);
   const [isMenuOpen, toggleMenu] = useToggle(false);
   const [menuList, setMenuList] = useState<MenuItem[]>(initialMenu);
 
@@ -52,13 +58,25 @@ function TopMenuContent({ locale, menuLabels }: TopMenuProps) {
     );
   }, []);
 
+  const clearActiveMenuItem = useCallback(() => {
+    setMenuList((prevState) =>
+      prevState.map((item) => ({
+        ...item,
+        // На кейсах подсвечиваем «Проекты»
+        isActive: item.link === '#projects',
+      }))
+    );
+  }, []);
+
   useScrollHandler({
     menuList,
     activateMenuItem,
+    clearActiveMenuItem,
     setIsFillBackground,
     isMenuOpen,
     scrollY,
     scrollThrottleDelay: 150,
+    enabled: isHomePage,
   });
 
   useEffect(() => {
@@ -66,15 +84,29 @@ function TopMenuContent({ locale, menuLabels }: TopMenuProps) {
       setIsFillBackground(true);
       document.body.style.overflow = 'hidden';
     } else {
-      setIsFillBackground(scrollY > 50);
+      setIsFillBackground(isHomePage ? scrollY > 50 : true);
       document.body.style.overflow = '';
     }
-  }, [isMenuOpen, scrollY]);
+  }, [isMenuOpen, scrollY, isHomePage]);
 
   const onChangeMenu = useCallback(
     (index: number) => {
-      activateMenuItem(index);
       const sectionId = menuList[index].link.replace('#', '');
+      const homeBase = localePath(locale);
+      const href =
+        sectionId === 'home'
+          ? homeBase
+          : homeBase === '/'
+            ? `/#${sectionId}`
+            : `${homeBase}#${sectionId}`;
+
+      if (!isHomePage) {
+        router.push(href);
+        toggleMenu(false);
+        return;
+      }
+
+      activateMenuItem(index);
 
       if (sectionId === 'home') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -86,7 +118,7 @@ function TopMenuContent({ locale, menuLabels }: TopMenuProps) {
       }
       toggleMenu(false);
     },
-    [menuList, activateMenuItem, toggleMenu]
+    [menuList, activateMenuItem, toggleMenu, isHomePage, locale, router]
   );
 
   const menuItems = useMemo(

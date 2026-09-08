@@ -4,7 +4,8 @@
 
 ## Возможности
 
-- Серверные секции (RSC): hero, опыт, философия, навыки, контакты
+- Серверные секции (RSC): hero, опыт, философия, **проекты**, навыки, контакты
+- Кейсы `/work/flowcrm`, `/work/shopadmin` (ru/en/de) + SEO metadata/hreflang/JSON-LD
 - Локали: `/` (ru), `/en/`, `/de/` + переключатель языка
 - SEO: metadata, canonical, hreflang, `sitemap.xml`, `robots.txt`, JSON-LD
 - API внутри Next: контакты → MongoDB + Telegram, список проектов, защищённый просмотр заявок
@@ -62,5 +63,5 @@ npm start
 
 ## Дальше по плану
 
-- Витрина проектов и кейсы `/work/[slug]`
 - Docker Compose и демо `/demos/<id>/`
+- Карточки Kwork / Upwork (заказ через биржи)

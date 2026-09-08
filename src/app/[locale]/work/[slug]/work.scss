@@ -1,0 +1,71 @@
+.work-case {
+  @apply text-white;
+  background: var(--color-lvl-1);
+  min-height: 70vh;
+  /* Отступ под fixed-хедер (min-h-20 + запас) */
+  padding: 7rem 0 4rem;
+
+  .work-case__container {
+    @apply flex flex-col gap-8 max-w-3xl;
+  }
+
+  .work-case__back {
+    @apply text-sm text-white/60 no-underline w-fit;
+
+    &:hover {
+      @apply text-white underline;
+    }
+  }
+
+  .work-case__header {
+    @apply flex flex-col gap-4;
+
+    h1 {
+      @apply text-4xl m-0;
+    }
+  }
+
+  .work-case__summary {
+    @apply text-lg text-white/75 m-0;
+  }
+
+  .work-case__stack {
+    @apply flex flex-wrap gap-2 m-0 p-0 list-none;
+
+    li {
+      @apply text-xs uppercase tracking-wide text-white/55 border border-white/15 px-2 py-1;
+    }
+  }
+
+  .work-case__block {
+    @apply flex flex-col gap-2;
+
+    h2 {
+      @apply text-sm uppercase tracking-wider text-white/45 m-0;
+    }
+
+    p {
+      @apply text-white/80 m-0 leading-relaxed;
+    }
+  }
+
+  .work-case__actions {
+    @apply flex flex-wrap gap-3 pt-4;
+  }
+
+  .work-case__btn {
+    @apply inline-flex items-center px-4 py-2 text-sm border border-white/25 text-white no-underline;
+
+    &:hover {
+      @apply bg-white/5;
+    }
+
+    &--primary {
+      @apply bg-blue-700 border-blue-700;
+
+      &:hover {
+        @apply bg-blue-600;
+      }
+    }
+  }
+}

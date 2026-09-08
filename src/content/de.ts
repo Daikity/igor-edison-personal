@@ -10,6 +10,7 @@ const dictionary: Dictionary = {
   menu: {
     home: 'Start',
     experience: 'Erfahrung',
+    projects: 'Projekte',
     skillset: 'Skills',
     contacts: 'Kontakt',
   },
@@ -99,6 +100,13 @@ const dictionary: Dictionary = {
           'Layout habe ich mit HTML und CSS gelernt — von einfachen Seiten bis zu responsivem, cross-browser UI. Preprocessor, Flexbox, Grid und moderne Methoden helfen bei klaren Interfaces.',
       },
     ],
+  },
+  projects: {
+    title: 'Projekte',
+    subtitle: 'Live-Demos und Case Studies — öffnen und durch die UI gehen.',
+    openCase: 'Case ansehen',
+    openDemo: 'Demo öffnen',
+    statusOnline: 'Online',
   },
   contacts: {
     title: 'Legen wir los',

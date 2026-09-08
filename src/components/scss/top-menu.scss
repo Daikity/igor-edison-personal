@@ -1,5 +1,7 @@
 .top-menu {
   @apply w-full left-0 top-0 z-[4] fixed;
+  padding-top: env(safe-area-inset-top, 0);
+
   .header__container {
     @apply flex justify-between items-center gap-14 min-h-20;
 

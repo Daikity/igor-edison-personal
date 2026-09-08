@@ -9,6 +9,7 @@ export interface Dictionary {
   menu: {
     home: string;
     experience: string;
+    projects: string;
     skillset: string;
     contacts: string;
   };
@@ -35,6 +36,13 @@ export interface Dictionary {
     title: string;
     description: string;
     skillList: Skills[];
+  };
+  projects: {
+    title: string;
+    subtitle: string;
+    openCase: string;
+    openDemo: string;
+    statusOnline: string;
   };
   contacts: {
     title: string;

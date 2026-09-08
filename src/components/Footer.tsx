@@ -2,17 +2,25 @@ import './scss/footer.scss';
 import LogoText from './LogoText';
 import Icon from './Icon';
 import type { Dictionary } from '@/i18n/types';
+import { localePath, type Locale } from '@/i18n/config';
 
 type FooterProps = {
+  locale: Locale;
   footer: Dictionary['footer'];
   menu: Dictionary['menu'];
 };
 
-export default function Footer({ footer, menu }: FooterProps) {
+function sectionHref(locale: Locale, hash: string): string {
+  const base = localePath(locale);
+  return base === '/' ? `/#${hash}` : `${base}#${hash}`;
+}
+
+export default function Footer({ locale, footer, menu }: FooterProps) {
   const navItems = [
-    { label: menu.experience, href: '#experience' },
-    { label: menu.skillset, href: '#skillset' },
-    { label: menu.contacts, href: '#contact' },
+    { label: menu.experience, href: sectionHref(locale, 'experience') },
+    { label: menu.projects, href: sectionHref(locale, 'projects') },
+    { label: menu.skillset, href: sectionHref(locale, 'skillset') },
+    { label: menu.contacts, href: sectionHref(locale, 'contact') },
   ];
 
   return (
